@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "users",
     "core",
+    "api",
 ]
 
 MIDDLEWARE = [
