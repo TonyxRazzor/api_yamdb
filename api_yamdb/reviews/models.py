@@ -6,6 +6,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 User = get_user_model() # ПОТОМ ПОМЕНЯТЬ НА КАСТОМНЫЙ !!!!
 
 
+class Title:
+    pass
+
+
 class Review(models.Model):
     title = models.ForeignKey(
         Title,
