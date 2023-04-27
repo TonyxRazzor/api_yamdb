@@ -27,7 +27,9 @@ class ReviewSerializer(serializers.ModelSerializer):
         if Review.objects.filter(
                 title=title,
                 author=author).exists() and request.method == 'POST':
-            raise ValidationError('Можно оставить только один отзыв на произведение')
+            raise serializers.ValidationError(
+                'Можно оставить только один отзыв на произведение'
+            )
         return data
 
 
