@@ -21,7 +21,7 @@ class GenreSerializer(serializers.ModelSerializer):
         lookup_field = 'slug'
 
 
-class TitlePullSerializer(serializers.ModelSerializer):
+class TitleSerializer(serializers.ModelSerializer):
     """Сериализатор чтения произведений"""
 
     category = CategorySerializer(read_only=True)
@@ -46,7 +46,7 @@ class TitlePullSerializer(serializers.ModelSerializer):
         return obj["rating"]
 
 
-class TitlePushSerializer(serializers.ModelSerializer):
+class TitleSerializer(serializers.ModelSerializer):
     """Сериализатор записи произведений"""
 
     category = serializers.SlugRelatedField(
