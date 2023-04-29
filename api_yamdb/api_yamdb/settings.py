@@ -23,20 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'rest_framework',
+    "rest_framework_simplejwt"
     'django_filters',
     'api.apps.ApiConfig',
     'reviews.apps.ReviewsConfig',
     'users',
     'core',
-=======
-    "rest_framework",
-    "rest_framework_simplejwt",
-    "users",
-    "core",
-    "api",
->>>>>>> develop
 ]
 
 MIDDLEWARE = [
