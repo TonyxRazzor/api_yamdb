@@ -23,12 +23,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'rest_framework',
     'django_filters',
     'api.apps.ApiConfig',
     'reviews.apps.ReviewsConfig',
     'users',
     'core',
+=======
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "users",
+    "core",
+    "api",
+>>>>>>> develop
 ]
 
 MIDDLEWARE = [
@@ -43,11 +51,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'api_yamdb.urls'
 
-TEMPLATES_DIR = BASE_DIR / 'templates'
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
