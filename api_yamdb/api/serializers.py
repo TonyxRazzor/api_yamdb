@@ -21,7 +21,7 @@ class GenreSerializer(serializers.ModelSerializer):
         lookup_field = 'slug'
 
 
-class TitleSerializer(serializers.ModelSerializer):
+class ReadOnlyTitleSerializer(serializers.ModelSerializer):
     """Сериализатор чтения произведений"""
 
     category = CategorySerializer(read_only=True)
