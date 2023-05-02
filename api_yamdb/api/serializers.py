@@ -1,5 +1,6 @@
 from django.db.models import Avg
 from rest_framework import serializers
+from django.shortcuts import get_object_or_404
 
 from reviews.models import Category, Genre, Title, Review, Comment
 
@@ -22,7 +23,7 @@ class GenreSerializer(serializers.ModelSerializer):
         lookup_field = 'slug'
 
 
-class TitlePullSerializer(serializers.ModelSerializer):
+class ReadOnlyTitleSerializer(serializers.ModelSerializer):
     """Сериализатор чтения произведений."""
 
     category = CategorySerializer(read_only=True)
@@ -47,7 +48,7 @@ class TitlePullSerializer(serializers.ModelSerializer):
         return obj["rating"]
 
 
-class TitlePushSerializer(serializers.ModelSerializer):
+class TitleSerializer(serializers.ModelSerializer):
     """Сериализатор записи произведений."""
 
     category = serializers.SlugRelatedField(
@@ -89,6 +90,10 @@ class ReviewSerializer(serializers.ModelSerializer):
     def validate(self, data):
         request = self.context['request']
         author = request.user
+        title = get_object_or_404(
+            Title,
+            pk=self.context.get('view').kwargs.get('title_id')
+        )
         if Review.objects.filter(
                 title=title,
                 author=author).exists() and request.method == 'POST':
