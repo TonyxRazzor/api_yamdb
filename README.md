@@ -68,7 +68,7 @@ git@github.com:TonyxRazzor/api_yamdb.git
 ```
 
 ```bash
-cd api_final_yatube
+cd api_yamdb
 ```
 
 - Cоздать и активировать виртуальное окружение:
