@@ -78,12 +78,23 @@ python3 -m venv env
 ```
 
 ```bash
-# для OS Lunix и MacOS
+# для OS Linux и MacOS
 source venv/bin/activate
 
-# для OS Windows
+# для OS Windows (git bash)
 source venv/Scripts/activate
 ```
+
+```python
+# OS Windows cmd.exe
+C:\> <venv>\Scripts\activate.bat
+```
+
+```python
+# OS Windows PowerShell
+C:\> <venv>\Scripts\Activate.ps1
+```
+
 - Установить зависимости из файла requirements.txt:
 # для OS Windows команда "python" пишется без цифры "3"
 
@@ -105,4 +116,15 @@ python3 manage.py migrate
 
 ```bash
 python3 manage.py runserver
+```
+
+- *Дополнительно* Для автоматического наполнения БД из csv файлов в папке
+project_root/static/data применить команду:
+
+```bash
+# OS Linux и MacOS
+python3 manage.py take_my_db
+
+# OS Windows
+python manage.py take_my_db
 ```

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .constants import CONF_CODE_MAX_LEN, EMAIL_MAX_LEN, USERNAME_MAX_LEN
+from .models import CONF_CODE_MAX_LEN, EMAIL_MAX_LEN, USERNAME_MAX_LEN
 from .models import User
 from .validators import not_me_username_validator, username_validator
 
