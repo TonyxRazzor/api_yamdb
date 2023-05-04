@@ -96,12 +96,14 @@ class GenreTitle(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         related_name='genretitle',
+        verbose_name='Жанр',
     )
     title = models.ForeignKey(
         Title,
         on_delete=models.SET_NULL,
         null=True,
         related_name='titlegenre',
+        verbose_name='Произведение',
     )
 
     class Meta:
