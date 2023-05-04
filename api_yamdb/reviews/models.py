@@ -2,7 +2,11 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from users.models import User
-from .validators import year_validator
+from reviews.validators import year_validator
+
+
+MIN_SCORE = 1
+MAX_SCORE = 10
 
 
 class Category(models.Model):
@@ -131,10 +135,13 @@ class Review(models.Model):
     score = models.IntegerField(
         verbose_name='Оценка',
         validators=(
-            MinValueValidator(1),
-            MaxValueValidator(10)
+            MinValueValidator(MIN_SCORE),
+            MaxValueValidator(MAX_SCORE)
         ),
-        error_messages={'validators': 'Поставьте оценку от 1 до 10'}
+        error_messages={
+            'validators':
+                'Поставьте оценку от {} до {}'.format(MIN_SCORE, MAX_SCORE)
+        }
     )
 
     class Meta:
