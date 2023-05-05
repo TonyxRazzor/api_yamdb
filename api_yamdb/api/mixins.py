@@ -7,4 +7,15 @@ class ListCreateDestroyViewSet(
     mixins.DestroyModelMixin,
     viewsets.GenericViewSet,
 ):
-    pass
+
+    """
+    Набор представлений, который предоставляет действия по умолчанию.
+    list():
+    Возвращает список всех существующих объектов.
+
+    create():
+    Создать новый объект.
+
+    destroy():
+    Удалить существующий объект.
+    """

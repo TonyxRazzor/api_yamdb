@@ -1,4 +1,3 @@
-from django.db.models import Avg
 from rest_framework import serializers
 from django.shortcuts import get_object_or_404
 
@@ -28,8 +27,7 @@ class ReadOnlyTitleSerializer(serializers.ModelSerializer):
 
     category = CategorySerializer(read_only=True)
     genre = GenreSerializer(read_only=True, many=True)
-    rating = serializers.SerializerMethodField(
-        read_only=True)
+    rating = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Title
@@ -42,10 +40,6 @@ class ReadOnlyTitleSerializer(serializers.ModelSerializer):
             'genre',
             'category',
         )
-
-    def get_rating(self, obj):
-        obj = obj.reviews.all().aggregate(rating=Avg("score"))
-        return obj["rating"]
 
 
 class TitleSerializer(serializers.ModelSerializer):
@@ -81,11 +75,6 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         model = Review
-
-    def validate_score(self, value):
-        if 0 > value > 10:
-            raise serializers.ValidationError('Оценка должна быть от 1 до 10')
-        return value
 
     def validate(self, data):
         request = self.context['request']

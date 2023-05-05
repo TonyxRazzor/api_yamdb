@@ -1,6 +1,6 @@
 from django.contrib.auth.tokens import default_token_generator
 
-from ..models import User
+from users.models import User
 
 
 def send_confirmation_code(user: User) -> str:

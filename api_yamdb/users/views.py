@@ -6,11 +6,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
-from core.permissions import IsAdmin
-from .models import User
-from .registration.confirmation import send_confirmation_code
-from .registration.token_generator import get_token_for_user
-from .serializers import (
+from users.permissions import IsAdmin
+from users.models import User
+from users.registration.confirmation import send_confirmation_code
+from users.registration.token_generator import get_token_for_user
+from users.serializers import (
     GetAuthTokenSerializer,
     SignUpSerializer,
     UserProfileSerializer,
