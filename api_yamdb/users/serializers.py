@@ -52,7 +52,7 @@ class SignUpSerializer(serializers.Serializer):
 
         return username
 
-    def validate_username(self, name):
+    def validate_username_me(self, name):
         """Запрещает пользователям присваивать себе имя me"""
 
         if name == 'me':
