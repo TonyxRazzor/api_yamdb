@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.db.models import CharField
 
-from .validators import not_me_username_validator, username_validator
+from users.validators import not_me_username_validator, username_validator
 
 
 """This will change User model. Run migrations."""

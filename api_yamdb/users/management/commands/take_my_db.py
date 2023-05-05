@@ -30,7 +30,7 @@ class Command(BaseCommand):
         logger.info("Finished!")
 
     def write_to_db(self, file_path: Path) -> None:
-        """Основная функция команды "manage.py fill_my_db".
+        """Основная функция команды "manage.py take_my_db".
         1) Принимает путь к файлу .csv
         2) Устанавливает соединение с БД
         3) Открывает файл и создает список с данными для записи в
