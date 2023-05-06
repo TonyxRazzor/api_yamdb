@@ -10,10 +10,13 @@ from api.filters import TitlesFilter
 from api.mixins import ListCreateDestroyViewSet
 from api.permissions import IsAuthorOrModeratorOrAdminOrReadOnly
 from users.permissions import IsAdminOrReadOnly
-from api.serializers import (ReviewSerializer, CommentSerializer,
-                             CategorySerializer, GenreSerializer,
+from api.serializers import (CategorySerializer,
+                             CommentSerializer,
+                             GenreSerializer,
                              ReadOnlyTitleSerializer,
-                             TitleSerializer)
+                             ReviewSerializer,
+                             TitleSerializer
+                             )
 
 
 class CategoryViewSet(ListCreateDestroyViewSet):
@@ -38,8 +41,7 @@ class GenreViewSet(ListCreateDestroyViewSet):
 
 class TitleViewSet(viewsets.ModelViewSet):
     queryset = Title.objects.annotate(
-        rating=Avg('reviews__score')
-    ).all().order_by("name")
+        rating=Avg('reviews__score'))
     serializer_class = TitleSerializer
     permission_classes = (IsAdminOrReadOnly, )
     filter_backends = (DjangoFilterBackend, )

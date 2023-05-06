@@ -7,14 +7,16 @@ from reviews.validators import year_validator
 
 MIN_SCORE = 1
 MAX_SCORE = 10
+MAX_LENGTH_NAME: int = 256
+MAX_LENGTH_SLUG: int = 50
 
 
 class Category(models.Model):
     """Модель категории произведения."""
 
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=MAX_LENGTH_NAME)
     slug = models.SlugField(
-        max_length=50,
+        max_length=MAX_LENGTH_SLUG,
         unique=True,
         db_index=True
     )
@@ -31,9 +33,9 @@ class Category(models.Model):
 class Genre(models.Model):
     """Модель жанра произведения."""
 
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=MAX_LENGTH_NAME)
     slug = models.SlugField(
-        max_length=50,
+        max_length=MAX_LENGTH_SLUG,
         unique=True,
         db_index=True
     )
@@ -71,7 +73,7 @@ class Title(models.Model):
     )
     name = models.CharField(
         'Название',
-        max_length=256,
+        max_length=MAX_LENGTH_NAME,
         db_index=True
     )
     year = models.IntegerField(

@@ -40,30 +40,10 @@ class SignUpSerializer(serializers.Serializer):
         required=True,
     )
 
-    def validate_username(self, username):
-        """Запрещает пользователям использовать символы в имени"""
-
-        forbidden_chars = [r'^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$']
-        for char in forbidden_chars:
-            if char in username:
-                raise serializers.ValidationError(
-                    "Имя пользователя содержит запрещенные символы"
-                )
-
-        return username
-
-    def validate_username_me(self, name):
-        """Запрещает пользователям присваивать себе имя me"""
-
-        if name == 'me':
-            raise serializers.ValidationError(
-                "Нельзя использовать me в качестве имени пользователя"
-            )
-
-        return name
-
     def validate(self, data):
-        """Запрещает использовать повторные username и email."""
+        """Запрещает использовать повторные username и email,
+        валидация имени на запрещеные символы,
+        валидация имени на 'me' или 'ME'"""
 
         username = data.get('username')
         email = data.get('email')
