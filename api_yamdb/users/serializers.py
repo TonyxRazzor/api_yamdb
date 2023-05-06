@@ -28,7 +28,9 @@ class UserProfileSerializer(UserSerializer):
 
 
 class SignUpSerializer(serializers.Serializer):
-    """Сериализатор для регистрации."""
+    """Сериализатор для регистрации.
+    Валидация имени на запрещеные символы.
+    Валидация имени на 'me' или 'ME'."""
 
     username = serializers.CharField(
         max_length=USERNAME_MAX_LEN,
