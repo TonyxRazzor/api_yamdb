@@ -43,9 +43,7 @@ class SignUpSerializer(serializers.Serializer):
     )
 
     def validate(self, data):
-        """Запрещает использовать повторные username и email,
-        валидация имени на запрещеные символы,
-        валидация имени на 'me' или 'ME'"""
+        """Запрещает использовать повторные username и email."""
 
         username = data.get('username')
         email = data.get('email')
